@@ -18,14 +18,17 @@ class Enterdigit extends StatelessWidget {
     );
   }
 }
+//width 392 and height 781
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final isAndoridsmall = MediaQuery.of(context).size.height > 780;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         //main body
+
         child: Column(
           children: [
             Row(
@@ -46,14 +49,25 @@ class Home extends StatelessWidget {
                 ),
                 Image.asset(
                   'Images/dots.png',
-                )
+                ),
               ]),
               width: 450,
               height: 50,
             ),
+            Row(
+              children: [
+                SizedBox(
+                  height: 70,
+                )
+              ],
+            ),
             Text(
               "We have already sent the 4 digit code to 2180000434@iau.edu.sa, please fill it in the form below",
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             SizedBox(
               height: 80,
@@ -77,14 +91,22 @@ class Home extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 60,
-            ),
+            isAndoridsmall
+                ? SizedBox(
+                    height: 60,
+                  )
+                : SizedBox(
+                    height: 40,
+                  ),
             Row(
               children: [
-                SizedBox(
-                  height: 250,
-                ),
+                isAndoridsmall
+                    ? SizedBox(
+                        height: 250,
+                      )
+                    : SizedBox(
+                        height: 200,
+                      ),
                 Container(
                   margin: EdgeInsets.all(10),
                   alignment: Alignment.center,
