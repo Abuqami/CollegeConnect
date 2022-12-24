@@ -18,6 +18,7 @@ class myacc extends StatelessWidget {
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final isAndoridsmall = MediaQuery.of(context).size.height > 780;
     return Scaffold(
         bottomNavigationBar: NavigationBar(
           backgroundColor: Color(0xFFF9DDAC),
@@ -72,110 +73,24 @@ class Home extends StatelessWidget {
               ),
             ),
             Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  topRight: Radius.circular(15),
-                ),
-              ),
-              child: Column(children: [
-                Row(children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: Image.asset(
-                      'Images/Bell.png',
-                      width: 30,
-                      height: 30,
-                    ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
                   ),
-                  SizedBox(width: 320),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Image.asset(
-                      'Images/Power.png',
-                      width: 30,
-                      height: 30,
-                    ),
-                  )
-                ]),
-                Image.asset(
-                  'Images/Profile.png',
-                  width: 60,
-                  height: 60,
                 ),
-                Text("Mohammed Ali"),
-                Text("@Mohammed"),
-              ]),
-              width: 400,
-              height: 150,
-            ),
+                child: isAndoridsmall ? UpperPart() : UpperPartsmall()),
             Expanded(
               flex: 6,
               child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                ),
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 20,
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Image.asset(
-                        'Images/Button5.png',
-                        width: 130,
-                        height: 130,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 100,
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Image.asset(
-                        'Images/Button6.png',
-                        width: 130,
-                        height: 130,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                  ),
+                  child: isAndoridsmall ? RowUp() : RowUpSmall()),
             ),
             Row(
-              children: [
-                Container(
-                  child: Row(children: [
-                    SizedBox(
-                      width: 20,
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Image.asset(
-                        'Images/Button7.png',
-                        width: 130,
-                        height: 130,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 100,
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Image.asset(
-                        'Images/Button8.png',
-                        width: 130,
-                        height: 130,
-                      ),
-                    ),
-                  ]),
-                  width: 392,
-                  height: 150,
-                  color: Colors.white,
-                )
-              ],
+              children: [isAndoridsmall ? Bottom() : BottomSmall()],
             ),
             Container(
               height: 50,
@@ -183,5 +98,234 @@ class Home extends StatelessWidget {
             )
           ]),
         ));
+  }
+}
+
+class RowUp extends StatelessWidget {
+  const RowUp({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          width: 20,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Button5.png',
+            width: 130,
+            height: 130,
+          ),
+        ),
+        SizedBox(
+          width: 90,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Button6.png',
+            width: 130,
+            height: 130,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class RowUpSmall extends StatelessWidget {
+  const RowUpSmall({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          width: 20,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Button5.png',
+            width: 130,
+            height: 130,
+          ),
+        ),
+        SizedBox(
+          width: 110,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Button6.png',
+            width: 130,
+            height: 130,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class Bottom extends StatelessWidget {
+  const Bottom({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(children: [
+        SizedBox(
+          width: 20,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Button7.png',
+            width: 130,
+            height: 130,
+          ),
+        ),
+        SizedBox(
+          width: 90,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Button8.png',
+            width: 130,
+            height: 130,
+          ),
+        ),
+      ]),
+      width: 392,
+      height: 150,
+      color: Colors.white,
+    );
+  }
+}
+
+class BottomSmall extends StatelessWidget {
+  const BottomSmall({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(children: [
+        SizedBox(
+          width: 20,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Button7.png',
+            width: 130,
+            height: 130,
+          ),
+        ),
+        SizedBox(
+          width: 110,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Button8.png',
+            width: 130,
+            height: 130,
+          ),
+        ),
+      ]),
+      width: 410,
+      height: 150,
+      color: Colors.white,
+    );
+  }
+}
+
+class UpperPart extends StatelessWidget {
+  const UpperPart({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      Row(children: [
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Bell.png',
+            width: 30,
+            height: 30,
+          ),
+        ),
+        SizedBox(width: 320),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Power.png',
+            width: 30,
+            height: 30,
+          ),
+        )
+      ]),
+      Image.asset(
+        'Images/Profile.png',
+        width: 60,
+        height: 60,
+      ),
+      Text("Mohammed Ali"),
+      Text("@Mohammed"),
+    ]);
+  }
+}
+
+class UpperPartsmall extends StatelessWidget {
+  const UpperPartsmall({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      Row(children: [
+        SizedBox(
+          width: 10,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Bell.png',
+            width: 30,
+            height: 30,
+          ),
+        ),
+        SizedBox(width: 330),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Power.png',
+            width: 30,
+            height: 30,
+          ),
+        )
+      ]),
+      Image.asset(
+        'Images/Profile.png',
+        width: 60,
+        height: 60,
+      ),
+      Text("Mohammed Ali"),
+      Text("@Mohammed"),
+    ]);
   }
 }

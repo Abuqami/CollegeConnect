@@ -19,6 +19,7 @@ class Myposts extends StatelessWidget {
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final isAndoridsmall = MediaQuery.of(context).size.height > 780;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xFFF9DDAC),
@@ -48,7 +49,6 @@ class Home extends StatelessWidget {
               ),
               Container(
                 width: 250,
-                height: 50,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20)),
@@ -71,383 +71,402 @@ class Home extends StatelessWidget {
             ),
           ),
           Expanded(
-              flex: 6,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15),
-                  ),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
                 ),
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(width: 25),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 100),
-                        height: 160,
-                        width: 340,
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                                color: Color.fromARGB(255, 167, 163, 163))),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+              child: ListView.builder(
+                  itemCount: 10, itemBuilder: ((context, index) => Post())),
+            ),
+          ),
+          isAndoridsmall ? AddButton() : AddButton(),
+        ]),
+      ),
+    );
+  }
+}
+
+class AddButton extends StatelessWidget {
+  const AddButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AddButtonSmall();
+  }
+}
+
+class AddButtonSmall extends StatelessWidget {
+  const AddButtonSmall({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(color: Colors.white),
+      height: 60,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 335,
+          ),
+          GestureDetector(
+            onTap: () {
+              showDialog(
+                  context: context,
+                  builder: ((context) => AlertDialog(
+                        content: Stack(
+                          children: [
+                            Row(
+                              children: [
+                                GestureDetector(
+                                  child: Image.asset(
+                                    'Images/Delete.png',
+                                    width: 20,
+                                    height: 20,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 220,
+                                ),
+                                GestureDetector(
+                                  child: Image.asset(
+                                    'Images/Message.png',
+                                    width: 20,
+                                    height: 20,
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                        title: (Text(
+                          "Post",
+                          textAlign: TextAlign.center,
+                        )),
+                        backgroundColor: Color(0xFFF9DDAC),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        actions: [
+                          Container(
+                            width: 310,
+                            height: 100,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20)),
+                            child: TextField(
+                              onChanged: (value) {},
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Enter Descreption..."),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 50,
+                          ),
+                          Row(
                             children: [
                               Container(
-                                child: Row(children: [
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Image.asset(
-                                    'Images/Blackprofile.png',
-                                    width: 30,
-                                    height: 30,
-                                  ),
-                                  Text("Mohammed Ali"),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text("@moham123"),
-                                  SizedBox(
-                                    width: 60,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: ((context) => AlertDialog(
-                                              content: Text(
-                                                'Are you sure about deleting this post?',
-                                                style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              actions: [
-                                                TextButton(
-                                                    onPressed: (() {}),
-                                                    child: Text(
-                                                      'Cancel',
-                                                      style: TextStyle(
-                                                          color: Colors.black,
-                                                          fontSize: 14),
-                                                    )),
-                                                TextButton(
-                                                    onPressed: (() {}),
-                                                    child: Text(
-                                                      'Yes',
-                                                      style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 14,
-                                                      ),
-                                                    ))
-                                              ],
-                                              backgroundColor:
-                                                  Color(0xFFF9DDAC),
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          30)))));
-                                    },
-                                    child: Image.asset(
-                                      'Images/Delete.png',
-                                      width: 15,
-                                      height: 15,
-                                    ),
-                                  ),
-                                ]),
-                                width: 300,
-                                height: 50,
-                              ),
-                              Container(
-                                child: Row(children: [
-                                  SizedBox(
-                                    width: 30,
-                                  ),
-                                  Text("This is an example of a post"),
-                                ]),
-                                width: 300,
-                                height: 50,
-                              ),
-                              Container(
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Container(
-                                      width: 50,
-                                      child: Text("10H"),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'Images/Update.png',
-                                        width: 200,
-                                        height: 40,
-                                      ),
-                                    ),
-                                    Container(
-                                      child: Row(children: [
-                                        GestureDetector(
-                                          onTap: () {},
-                                          child: Image.asset(
-                                            'Images/Heart.png',
-                                            width: 15,
-                                            height: 15,
-                                          ),
-                                        ),
-                                        Text("12"),
-                                        GestureDetector(
-                                          onTap: () {
-                                            showDialog(
-                                                context: context,
-                                                builder: ((context) =>
-                                                    AlertDialog(
-                                                      title: Text(
-                                                        " 1 Comment",
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                            fontSize: 14),
-                                                      ),
-                                                      backgroundColor:
-                                                          Color(0xFFF9DDAC),
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(30),
-                                                      ),
-                                                      content: Stack(children: [
-                                                        Container(
-                                                          child: Row(children: [
-                                                            Image.asset(
-                                                              'Images/Blackprofile.png',
-                                                              width: 30,
-                                                              height: 30,
-                                                            ),
-                                                            SizedBox(
-                                                              width: 10,
-                                                            ),
-                                                            Text(
-                                                              "@moham123",
-                                                              style: TextStyle(
-                                                                  fontSize: 14),
-                                                            ),
-                                                          ]),
-                                                        ),
-                                                      ]),
-                                                      actions: [
-                                                        Container(
-                                                            child: Row(
-                                                          children: [
-                                                            Text(
-                                                              "This is an example of a post",
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                            )
-                                                          ],
-                                                        )),
-                                                        SizedBox(
-                                                          height: 10,
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            Text("10H")
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            Container(
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                      color: Colors
-                                                                          .black),
-                                                              width: 290,
-                                                              height: 1,
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            SizedBox(
-                                                              height: 30,
-                                                            )
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            Image.asset(
-                                                              'Images/Blackprofile.png',
-                                                              width: 30,
-                                                              height: 30,
-                                                            ),
-                                                            SizedBox(
-                                                              width: 10,
-                                                            ),
-                                                            Text(
-                                                              "@Saeed",
-                                                              style: TextStyle(
-                                                                  fontSize: 14),
-                                                            )
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            SizedBox(
-                                                              height: 30,
-                                                            )
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            Text(
-                                                                "This is a comment example")
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            Text("2H")
-                                                          ],
-                                                        )
-                                                      ],
-                                                    )));
-                                          },
-                                          child: Image.asset(
-                                            'Images/Comment.png',
-                                            width: 15,
-                                            height: 15,
-                                          ),
-                                        ),
-                                        Text("1")
-                                      ]),
-                                    ),
-                                  ],
+                                decoration: BoxDecoration(color: Colors.black),
+                                width: 290,
+                                height: 1,
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {},
+                                child: Image.asset(
+                                  'Images/Album.png',
+                                  width: 25,
+                                  height: 25,
                                 ),
                               ),
-                            ]),
-                      )
-                    ]),
-              )),
-          Container(
-            decoration: BoxDecoration(color: Colors.white),
-            height: 100,
-            child: Row(
-              children: [
+                              SizedBox(
+                                width: 10,
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Image.asset(
+                                  'Images/Link.png',
+                                  width: 25,
+                                  height: 25,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      )));
+            },
+            child: Image.asset(
+              'Images/Add.png',
+              width: 60,
+              height: 60,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Post extends StatelessWidget {
+  const Post({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final isAndoridsmall = MediaQuery.of(context).size.height > 780;
+    return Row(
+      children: [
+        isAndoridsmall
+            ? Container(
+                width: 8,
+              )
+            : Container(
+                width: 18,
+              ),
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 10),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Color.fromARGB(255, 167, 163, 163))),
+          child: Column(children: [
+            Container(
+              child: Row(children: [
+                Image.asset(
+                  'Images/Blackprofile.png',
+                  width: 30,
+                  height: 30,
+                ),
                 SizedBox(
-                  width: 310,
+                  width: 5,
+                ),
+                Text("Mohammed Ali"),
+                SizedBox(
+                  width: 5,
+                ),
+                Text("@moham123"),
+                SizedBox(
+                  width: 120,
                 ),
                 GestureDetector(
                   onTap: () {
                     showDialog(
                         context: context,
                         builder: ((context) => AlertDialog(
-                              content: Stack(
-                                children: [
-                                  Row(
-                                    children: [
-                                      GestureDetector(
-                                        child: Image.asset(
-                                          'Images/Delete.png',
-                                          width: 20,
-                                          height: 20,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 220,
-                                      ),
-                                      GestureDetector(
-                                        child: Image.asset(
-                                          'Images/Message.png',
-                                          width: 20,
-                                          height: 20,
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                              title: (Text(
-                                "Post",
-                                textAlign: TextAlign.center,
-                              )),
-                              backgroundColor: Color(0xFFF9DDAC),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              actions: [
-                                Container(
-                                  width: 310,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: TextField(
-                                    onChanged: (value) {},
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "Enter Descreption..."),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 50,
-                                ),
-                                Row(
-                                  children: [
-                                    Container(
-                                      decoration:
-                                          BoxDecoration(color: Colors.black),
-                                      width: 290,
-                                      height: 1,
-                                    )
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'Images/Album.png',
-                                        width: 25,
-                                        height: 25,
-                                      ),
+                            content: Text(
+                              'Are you sure about deleting this post?',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            actions: [
+                              TextButton(
+                                  onPressed: (() {}),
+                                  child: Text(
+                                    'Cancel',
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 14),
+                                  )),
+                              TextButton(
+                                  onPressed: (() {}),
+                                  child: Text(
+                                    'Yes',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
                                     ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'Images/Link.png',
-                                        width: 25,
-                                        height: 25,
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            )));
+                                  ))
+                            ],
+                            backgroundColor: Color(0xFFF9DDAC),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30)))));
                   },
                   child: Image.asset(
-                    'Images/Add.png',
-                    width: 60,
-                    height: 60,
+                    'Images/Delete.png',
+                    width: 15,
+                    height: 15,
                   ),
                 ),
-              ],
+              ]),
             ),
-          )
-        ]),
-      ),
+            Container(
+              child: Row(children: [
+                SizedBox(
+                  width: 30,
+                ),
+                Flexible(child: Text("This is an example of a post")),
+              ]),
+              width: 300,
+              height: 50,
+            ),
+            Container(
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    width: 50,
+                    child: Text("10H"),
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Image.asset(
+                      'Images/Update.png',
+                      width: 200,
+                      height: 40,
+                    ),
+                  ),
+                  Container(
+                    child: Row(children: [
+                      SizedBox(
+                        width: 30,
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Image.asset(
+                          'Images/Heart.png',
+                          width: 15,
+                          height: 15,
+                        ),
+                      ),
+                      Text("12"),
+                      GestureDetector(
+                        onTap: () {
+                          showDialog(
+                              context: context,
+                              builder: ((context) => AlertDialog(
+                                    title: Text(
+                                      " 1 Comment",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                    backgroundColor: Color(0xFFF9DDAC),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                    content: Stack(children: [
+                                      Container(
+                                        child: Row(children: [
+                                          Image.asset(
+                                            'Images/Blackprofile.png',
+                                            width: 30,
+                                            height: 30,
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            "@moham123",
+                                            style: TextStyle(fontSize: 14),
+                                          ),
+                                        ]),
+                                      ),
+                                    ]),
+                                    actions: [
+                                      Container(
+                                          child: Row(
+                                        children: [
+                                          Flexible(
+                                            child: Text(
+                                              "This is an example of a post",
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          )
+                                        ],
+                                      )),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Row(
+                                        children: [Text("10H")],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                                color: Colors.black),
+                                            width: 290,
+                                            height: 1,
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            height: 30,
+                                          )
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                            'Images/Blackprofile.png',
+                                            width: 30,
+                                            height: 30,
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            "@Saeed",
+                                            style: TextStyle(fontSize: 14),
+                                          )
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            height: 30,
+                                          )
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Flexible(
+                                              child: Text(
+                                                  "This is a comment example"))
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [Text("2H")],
+                                      )
+                                    ],
+                                  )));
+                        },
+                        child: Image.asset(
+                          'Images/Comment.png',
+                          width: 15,
+                          height: 15,
+                        ),
+                      ),
+                      Text("1")
+                    ]),
+                  ),
+                ],
+              ),
+            ),
+          ]),
+        ),
+      ],
     );
   }
 }
