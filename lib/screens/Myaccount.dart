@@ -11,7 +11,10 @@ void main() {
 class myacc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(home: Home());
+    return GetMaterialApp(
+      home: Home(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
 
@@ -19,6 +22,8 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isAndoridsmall = MediaQuery.of(context).size.height > 780;
+    final isPixel3 = MediaQuery.of(context).size.height > 736;
+
     return Scaffold(
         bottomNavigationBar: NavigationBar(
           backgroundColor: Color(0xFFF9DDAC),
@@ -27,27 +32,27 @@ class Home extends StatelessWidget {
             NavigationDestination(
               icon: Icon(Icons.home_outlined),
               selectedIcon: Icon(Icons.home_outlined),
-              label: '.',
+              label: 'ㅤ',
             ),
             NavigationDestination(
               icon: Icon(Icons.reduce_capacity_rounded),
               selectedIcon: Icon(Icons.reduce_capacity_rounded),
-              label: '.',
+              label: 'ㅤ',
             ),
             NavigationDestination(
               icon: Icon(Icons.menu_book_rounded),
               selectedIcon: Icon(Icons.menu_book_rounded),
-              label: '.',
+              label: 'ㅤ',
             ),
             NavigationDestination(
               icon: Icon(Icons.group_outlined),
               selectedIcon: Icon(Icons.group_outlined),
-              label: '.',
+              label: 'ㅤ',
             ),
             NavigationDestination(
               icon: Icon(Icons.person),
               selectedIcon: Icon(Icons.sd_card_alert),
-              label: '.',
+              label: 'ㅤ',
             )
           ],
         ),
@@ -80,17 +85,31 @@ class Home extends StatelessWidget {
                     topRight: Radius.circular(15),
                   ),
                 ),
-                child: isAndoridsmall ? UpperPart() : UpperPartsmall()),
+                child: isPixel3
+                    ? UpperPart()
+                    : isAndoridsmall
+                        ? UpperPart()
+                        : UpperPartsmall()),
             Expanded(
               flex: 6,
               child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
                   ),
-                  child: isAndoridsmall ? RowUp() : RowUpSmall()),
+                  child: isPixel3
+                      ? RowUp()
+                      : isAndoridsmall
+                          ? RowUp()
+                          : RowUpSmall()),
             ),
             Row(
-              children: [isAndoridsmall ? Bottom() : BottomSmall()],
+              children: [
+                isPixel3
+                    ? Bottom()
+                    : isAndoridsmall
+                        ? Bottom()
+                        : BottomSmall()
+              ],
             ),
             Container(
               height: 50,

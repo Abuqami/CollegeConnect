@@ -15,6 +15,7 @@ class Enterdigit extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: Home(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -45,7 +46,7 @@ class Home extends StatelessWidget {
             Container(
               child: Row(children: [
                 SizedBox(
-                  width: 30,
+                  width: 40,
                 ),
                 Image.asset(
                   'Images/dots.png',

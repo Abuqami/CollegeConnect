@@ -12,7 +12,10 @@ void main() {
 class Myposts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(home: Home());
+    return GetMaterialApp(
+      home: Home(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
 
@@ -465,6 +468,7 @@ class Post extends StatelessWidget {
                           showDialog(
                               context: context,
                               builder: ((context) => AlertDialog(
+                                    scrollable: true,
                                     title: Text(
                                       " 1 Comment",
                                       textAlign: TextAlign.center,

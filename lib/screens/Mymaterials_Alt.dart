@@ -80,71 +80,134 @@ class Home extends StatelessWidget {
                         ),
                       ),
                     )
-                  : Container(
-                      width: 440,
+                  : isPixel3
+                      ? Container(
+                          width: 400,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15),
+                            ),
+                          ),
+                        )
+                      : isAndoridsmall
+                          ? Container(
+                              width: 420,
+                              height: 120,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(15),
+                                    topRight: Radius.circular(15),
+                                  )),
+                            )
+                          : Container(
+                              width: 420,
+                              height: 120,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(15),
+                                    topRight: Radius.circular(15),
+                                  )),
+                            ),
+              Container(
+                height: 20,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+              ),
+              isPixel3
+                  ? Container(
+                      width: 400,
                       height: 120,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15),
-                          topRight: Radius.circular(15),
-                        ),
+                        borderRadius: BorderRadius.only(),
                       ),
-                    ),
-              Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                  ),
-                  child: isAndoridsmall
-                      ? UpperRow()
-                      : isPixel3
-                          ? UpperRow()
-                          : isAndoridsmall
-                              ? UpperRow()
-                              : UpperRowSmall()),
-              isAndoridsmall
-                  ? Container(
-                      width: 400,
-                      height: 20,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
+                      child: UpperRow(),
                     )
-                  : Container(
-                      width: 420,
-                      height: 20,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      )),
-              isAndoridsmall
-                  ? BottomRow()
-                  : isPixel3
-                      ? BottomRow()
-                      : isAndoridsmall
-                          ? BottomRowSmall()
-                          : BottomRowSmall(),
-              isAndoridsmall
-                  ? Container(
-                      width: 400,
-                      height: 153.5,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                    )
-                  : isPixel3
+                  : isAndoridsmall
                       ? Container(
-                          width: 420,
-                          height: 148,
+                          width: 400,
+                          height: 120,
                           decoration: BoxDecoration(
                             color: Colors.white,
+                            borderRadius: BorderRadius.only(),
+                          ),
+                          child: UpperRow(),
+                        )
+                      : Container(
+                          width: 420,
+                          height: 120,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(),
+                          ),
+                          child: UpperRow()),
+              isPixel3
+                  ? Container(
+                      width: 400,
+                      height: 120,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(),
+                      ),
+                    )
+                  : isAndoridsmall
+                      ? Container(
+                          width: 400,
+                          height: 120,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(),
                           ),
                         )
                       : Container(
                           width: 420,
-                          height: 94,
+                          height: 120,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                          ))
+                            borderRadius: BorderRadius.only(),
+                          ),
+                        ),
+              isAndoridsmall
+                  ? Container(
+                      width: 400,
+                      height: 183,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(),
+                      ),
+                    )
+                  : isPixel3
+                      ? Container(
+                          width: 400,
+                          height: 148.2,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(),
+                          ),
+                        )
+                      : isAndoridsmall
+                          ? Container(
+                              width: 400,
+                              height: 140,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(),
+                              ),
+                            )
+                          : Container(
+                              width: 420,
+                              height: 124,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(),
+                              ),
+                            ),
             ],
           ),
         ),
@@ -163,13 +226,16 @@ class UpperRow extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: 20,
+          width: 45,
         ),
         Button1(),
         SizedBox(
-          width: 90,
+          width: 40,
         ),
         Button2(),
+        SizedBox(
+          width: 45,
+        ),
       ],
     );
   }
