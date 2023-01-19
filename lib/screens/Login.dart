@@ -1,12 +1,22 @@
 import 'package:collegeconnect/screens/Forgot_Password.dart';
+import 'package:collegeconnect/screens/admin_dashboard.dart';
+import 'package:flutter/services.dart';
 
 import 'landing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:collegeconnect/utilities/constants.dart';
 import 'package:get/get.dart';
+import 'package:collegeconnect/utilities/Extension.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +24,6 @@ class Login extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(2.0),
         child: Column(
-
           children: [
             Expanded(
               child: Column(
@@ -29,70 +38,95 @@ class Login extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          style: TextStyle(fontSize: 15),
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Email',
-                              hintText: 'Example@iau.edu.sa'),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Password',
-                              hintText: '•••••••••••••••••••••'),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 2.0,
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            style: TextStyle(fontSize: 15),
+                            decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'Email',
+                                hintText: 'Example@iau.edu.sa',
+                                counterText: "", //this would hide the counter from counting and adding more space between these two forms
                             ),
-                            GestureDetector(
-                              onTap: (){
-                                Get.to(ForgotPassword());
-                              },
-                              child: Text(
-                                "Forgot Password?",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12,
-                                  color: Color(0xFF199D8C),
-                                  decoration: TextDecoration.underline,
+                            validator: (val) {
+                              if (!val!.isValidEmail)
+                                return 'Please enter your email as follows: Example@iau.edu.sa';
+                            },
+                            maxLength: 21,
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          TextFormField(
+                            decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'Password',
+                                hintText: ''),
+                            obscureText: true,
+                            autocorrect: false,
+                            enableSuggestions: false,
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 2.0,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(ForgotPassword());
+                                },
+                                child: Text(
+                                  "Forgot Password?",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                    color: Color(0xFF199D8C),
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          GestureDetector(
+                            onTap: (){
+                              if(!_formKey.currentState!.validate()){
+                                /*Get.snackbar("Error", "Please Enter Your Information properly",
+                                snackPosition: SnackPosition.TOP,
+                                  margin: EdgeInsets.only(top: 10)
+                                );*/
+                              } else{
+                                Get.to(AdminDashboard());
+                              }
+                            },
+                            child: Container(
+                              width: 235,
+                              height: 40,
+
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Color(0xFFF9DDAC),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Login',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: 17),
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          width: 235,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Color(0xFFF9DDAC),
                           ),
-                          child: Center(
-                            child: Text(
-                              'Login',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w900,
-                                fontSize: 17
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
