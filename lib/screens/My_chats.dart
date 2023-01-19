@@ -12,7 +12,10 @@ void main() {
 class Mychats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(home: Home());
+    return GetMaterialApp(
+      home: Home(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
 

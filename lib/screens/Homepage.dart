@@ -6,10 +6,10 @@ import 'package:collegeconnect/utilities/constants.dart';
 import 'package:collegeconnect/widgets/landingPageButtons.dart';
 
 void main() {
-  runApp(Community());
+  runApp(Homepage());
 }
 
-class Community extends StatelessWidget {
+class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -155,7 +155,7 @@ class Post extends StatelessWidget {
                 width: 15,
               )
             : Container(
-                width: 18,
+                width: 14,
               ),
         Container(
           margin: EdgeInsets.symmetric(vertical: 10),

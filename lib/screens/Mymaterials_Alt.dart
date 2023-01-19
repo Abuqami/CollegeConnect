@@ -6,10 +6,10 @@ import 'package:collegeconnect/utilities/constants.dart';
 import 'package:collegeconnect/widgets/landingPageButtons.dart';
 
 void main() {
-  runApp(mymats());
+  runApp(mymatsalt());
 }
 
-class mymats extends StatelessWidget {
+class mymatsalt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -51,7 +51,7 @@ class Home extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 40,
+                height: 20,
               ),
               Align(
                 alignment: Alignment.center,
@@ -176,7 +176,7 @@ class Home extends StatelessWidget {
               isAndoridsmall
                   ? Container(
                       width: 400,
-                      height: 183,
+                      height: 203,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(),
@@ -185,7 +185,7 @@ class Home extends StatelessWidget {
                   : isPixel3
                       ? Container(
                           width: 400,
-                          height: 148.2,
+                          height: 168.2,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(),
@@ -202,7 +202,7 @@ class Home extends StatelessWidget {
                             )
                           : Container(
                               width: 420,
-                              height: 124,
+                              height: 144,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.only(),
