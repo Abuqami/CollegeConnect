@@ -1,4 +1,5 @@
 import 'package:collegeconnect/screens/ManageCoordinators.dart';
+import 'package:collegeconnect/screens/User_Issues.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -118,21 +119,26 @@ class AdminDashboard extends StatelessWidget {
                           SizedBox(
                             height: 45,
                           ),
-                          Container(
-                            width: 169,
-                            height: 93,
-                            decoration: BoxDecoration(
-                                color: Color(0xFFF9DDAC),
-                                borderRadius: BorderRadius.circular(22)),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                FaIcon(FontAwesomeIcons.question),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text("User Issues"),
-                              ],
+                          GestureDetector(
+                            onTap: (){
+                              Get.to(() => UserIssues());
+                            },
+                            child: Container(
+                              width: 169,
+                              height: 93,
+                              decoration: BoxDecoration(
+                                  color: Color(0xFFF9DDAC),
+                                  borderRadius: BorderRadius.circular(22)),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  FaIcon(FontAwesomeIcons.question),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text("User Issues"),
+                                ],
+                              ),
                             ),
                           ),
                         ],

@@ -56,7 +56,7 @@ class ManageCoordinator extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(15),
                       topLeft: Radius.circular(15),
-                      bottomRight: Radius.circular(100000000),
+                      bottomRight: Radius.circular(1000),
                     ),
                   ),
                   child: Column(

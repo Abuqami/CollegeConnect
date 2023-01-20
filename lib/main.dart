@@ -1,8 +1,12 @@
 import 'package:collegeconnect/screens/Educational_Resources.dart';
+
 import 'package:collegeconnect/screens/Forgot_Password.dart';
 import 'package:collegeconnect/screens/Login.dart';
 import 'package:collegeconnect/screens/ManageCoordinators.dart';
+import 'package:collegeconnect/screens/Navigate%20Majors.dart';
+
 import 'package:collegeconnect/screens/Test.dart';
+import 'package:collegeconnect/screens/User_Issues.dart';
 import 'package:collegeconnect/screens/admin_dashboard.dart';
 import 'package:collegeconnect/screens/dropdown.dart';
 import 'package:collegeconnect/screens/landing_page.dart';
@@ -26,7 +30,7 @@ class CollegeConnect extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       home: SafeArea(
-        child: ForgotPassword(),
+        child: AdminDashboard(),
       ),
     );
   }
