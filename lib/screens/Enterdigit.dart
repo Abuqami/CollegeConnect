@@ -43,18 +43,31 @@ class Home extends StatelessWidget {
                 ),
               ],
             ),
-            Container(
-              child: Row(children: [
-                SizedBox(
-                  width: 40,
-                ),
-                Image.asset(
-                  'Images/dots.png',
-                ),
-              ]),
-              width: 450,
-              height: 50,
-            ),
+            isAndoridsmall
+                ? Container(
+                    child: Row(children: [
+                      SizedBox(
+                        width: 27,
+                      ),
+                      Image.asset(
+                        'Images/dots.png',
+                        width: 350,
+                        height: 50,
+                      ),
+                    ]),
+                  )
+                : Container(
+                    child: Row(children: [
+                      SizedBox(
+                        width: 40,
+                      ),
+                      Image.asset(
+                        'Images/dots.png',
+                        width: 450,
+                        height: 50,
+                      ),
+                    ]),
+                  ),
             Row(
               children: [
                 SizedBox(
@@ -62,12 +75,13 @@ class Home extends StatelessWidget {
                 )
               ],
             ),
-            Text(
-              "We have already sent the 4 digit code to 2180000434@iau.edu.sa, please fill it in the form below",
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
+            Flexible(
+              child: Text(
+                "We have already sent the 4 digit code to 2180000434@iau.edu.sa, please fill it in the form below",
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SizedBox(
