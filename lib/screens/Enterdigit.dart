@@ -19,7 +19,6 @@ class Enterdigit extends StatelessWidget {
     );
   }
 }
-//width 392 and height 781
 
 class Home extends StatelessWidget {
   @override
@@ -59,11 +58,11 @@ class Home extends StatelessWidget {
                 : Container(
                     child: Row(children: [
                       SizedBox(
-                        width: 40,
+                        width: 25,
                       ),
                       Image.asset(
                         'Images/dots.png',
-                        width: 450,
+                        width: 350,
                         height: 50,
                       ),
                     ]),
@@ -75,7 +74,8 @@ class Home extends StatelessWidget {
                 )
               ],
             ),
-            Flexible(
+            Padding(
+              padding: const EdgeInsets.all(15.0),
               child: Text(
                 "We have already sent the 4 digit code to 2180000434@iau.edu.sa, please fill it in the form below",
                 style: TextStyle(
@@ -117,10 +117,10 @@ class Home extends StatelessWidget {
               children: [
                 isAndoridsmall
                     ? SizedBox(
-                        height: 250,
+                        height: 200,
                       )
                     : SizedBox(
-                        height: 200,
+                        height: 180,
                       ),
                 Container(
                   margin: EdgeInsets.all(10),
