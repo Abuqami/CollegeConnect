@@ -4,23 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:collegeconnect/utilities/constants.dart';
 import 'package:collegeconnect/widgets/landingPageButtons.dart';
 
-void main() {
-  runApp(
-    Enterdigit(),
-  );
-}
-
 class Enterdigit extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      home: Home(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
+  const Enterdigit({Key? key}) : super(key: key);
 
-class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isAndoridsmall = MediaQuery.of(context).size.height > 780;
