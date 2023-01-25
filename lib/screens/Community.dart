@@ -5,23 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:collegeconnect/utilities/constants.dart';
 import 'package:collegeconnect/widgets/landingPageButtons.dart';
 
-void main() {
-  runApp(Community());
-}
-
 class Community extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      home: Home(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final IsPixel6 = MediaQuery.of(context).size.height > 820;
     final isAndoridsmall = MediaQuery.of(context).size.height > 780;
     final isPixel3 = MediaQuery.of(context).size.height > 736;
 
@@ -56,14 +44,19 @@ class Home extends StatelessWidget {
               bottom: 0,
             ),
           ),
+          Container(
+            height: 40,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(),
+            ),
+            child: Pref_row(isPixel3: isPixel3, isAndoridsmall: isAndoridsmall),
+          ),
           Expanded(
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  topRight: Radius.circular(15),
-                ),
+                borderRadius: BorderRadius.only(),
               ),
               child: ListView.builder(
                   itemCount: 10, itemBuilder: ((context, index) => Post())),
@@ -82,21 +75,26 @@ class Post extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final IsPixel6 = MediaQuery.of(context).size.height > 820;
     final isAndoridsmall = MediaQuery.of(context).size.height > 780;
     final isPixel3 = MediaQuery.of(context).size.height > 736;
     return Row(
       children: [
-        isPixel3
+        IsPixel6
             ? Container(
-                width: 10,
+                width: 19,
               )
-            : isAndoridsmall
+            : isPixel3
                 ? Container(
                     width: 10,
                   )
-                : Container(
-                    width: 18,
-                  ),
+                : isAndoridsmall
+                    ? Container(
+                        width: 10,
+                      )
+                    : Container(
+                        width: 18,
+                      ),
         Container(
           margin: EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
@@ -327,6 +325,86 @@ class Navbar extends StatelessWidget {
           selectedIcon: Icon(Icons.sd_card_alert),
           label: 'ㅤ',
         )
+      ],
+    );
+  }
+}
+
+class Pref_row extends StatelessWidget {
+  const Pref_row({
+    Key? key,
+    required this.isPixel3,
+    required this.isAndoridsmall,
+  }) : super(key: key);
+
+  final bool isPixel3;
+  final bool isAndoridsmall;
+
+  @override
+  Widget build(BuildContext context) {
+    final IsPixel6 = MediaQuery.of(context).size.height > 820;
+    return Row(
+      children: [
+        IsPixel6
+            ? SizedBox(
+                width: 30,
+              )
+            : isPixel3
+                ? SizedBox(
+                    width: 10,
+                  )
+                : isAndoridsmall
+                    ? SizedBox(width: 30)
+                    : SizedBox(
+                        width: 25,
+                      ),
+        GestureDetector(
+          child: Image.asset(
+            'Images/Select.png',
+            width: 80,
+            height: 110,
+          ),
+        ),
+        SizedBox(
+          width: 10,
+        ),
+        GestureDetector(
+          child: Image.asset(
+            'Images/Today.png',
+            width: 60,
+            height: 60,
+          ),
+        ),
+        SizedBox(
+          width: 10,
+        ),
+        GestureDetector(
+          child: Image.asset(
+            'Images/Yesterday.png',
+            width: 80,
+            height: 90,
+          ),
+        ),
+        SizedBox(
+          width: 10,
+        ),
+        GestureDetector(
+          child: Image.asset(
+            'Images/Weekago.png',
+            width: 80,
+            height: 120,
+          ),
+        ),
+        SizedBox(
+          width: 10,
+        ),
+        GestureDetector(
+          child: Image.asset(
+            'Images/Selection.png',
+            width: 20,
+            height: 20,
+          ),
+        ),
       ],
     );
   }

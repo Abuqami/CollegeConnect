@@ -5,23 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:collegeconnect/utilities/constants.dart';
 import 'package:collegeconnect/widgets/landingPageButtons.dart';
 
-void main() {
-  runApp(Homepage());
-}
-
 class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      home: Home(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+    final IsPixel6 = MediaQuery.of(context).size.height > 820;
     final isAndoridsmall = MediaQuery.of(context).size.height > 780;
     final isPixel3 = MediaQuery.of(context).size.height > 736;
     return Scaffold(
@@ -64,66 +51,7 @@ class Home extends StatelessWidget {
                 topRight: Radius.circular(15),
               ),
             ),
-            child: Row(
-              children: [
-                isPixel3
-                    ? SizedBox(
-                        width: 10,
-                      )
-                    : isAndoridsmall
-                        ? SizedBox(width: 30)
-                        : SizedBox(
-                            width: 25,
-                          ),
-                GestureDetector(
-                  child: Image.asset(
-                    'Images/Select.png',
-                    width: 80,
-                    height: 110,
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                GestureDetector(
-                  child: Image.asset(
-                    'Images/Today.png',
-                    width: 60,
-                    height: 60,
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                GestureDetector(
-                  child: Image.asset(
-                    'Images/Yesterday.png',
-                    width: 80,
-                    height: 90,
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                GestureDetector(
-                  child: Image.asset(
-                    'Images/Weekago.png',
-                    width: 80,
-                    height: 120,
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                GestureDetector(
-                  child: Image.asset(
-                    'Images/Selection.png',
-                    width: 20,
-                    height: 20,
-                  ),
-                ),
-              ],
-            ),
+            child: Pref_row(isPixel3: isPixel3, isAndoridsmall: isAndoridsmall),
           ),
           Expanded(
             child: Container(
@@ -140,6 +68,86 @@ class Home extends StatelessWidget {
   }
 }
 
+class Pref_row extends StatelessWidget {
+  const Pref_row({
+    Key? key,
+    required this.isPixel3,
+    required this.isAndoridsmall,
+  }) : super(key: key);
+
+  final bool isPixel3;
+  final bool isAndoridsmall;
+
+  @override
+  Widget build(BuildContext context) {
+    final IsPixel6 = MediaQuery.of(context).size.height > 820;
+    return Row(
+      children: [
+        IsPixel6
+            ? SizedBox(
+                width: 25,
+              )
+            : isPixel3
+                ? SizedBox(
+                    width: 10,
+                  )
+                : isAndoridsmall
+                    ? SizedBox(width: 30)
+                    : SizedBox(
+                        width: 25,
+                      ),
+        GestureDetector(
+          child: Image.asset(
+            'Images/Select.png',
+            width: 80,
+            height: 110,
+          ),
+        ),
+        SizedBox(
+          width: 10,
+        ),
+        GestureDetector(
+          child: Image.asset(
+            'Images/Today.png',
+            width: 60,
+            height: 60,
+          ),
+        ),
+        SizedBox(
+          width: 10,
+        ),
+        GestureDetector(
+          child: Image.asset(
+            'Images/Yesterday.png',
+            width: 80,
+            height: 90,
+          ),
+        ),
+        SizedBox(
+          width: 10,
+        ),
+        GestureDetector(
+          child: Image.asset(
+            'Images/Weekago.png',
+            width: 80,
+            height: 120,
+          ),
+        ),
+        SizedBox(
+          width: 10,
+        ),
+        GestureDetector(
+          child: Image.asset(
+            'Images/Selection.png',
+            width: 20,
+            height: 20,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class Post extends StatelessWidget {
   const Post({
     Key? key,
@@ -147,16 +155,21 @@ class Post extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final IsPixel6 = MediaQuery.of(context).size.height > 820;
     final isAndoridsmall = MediaQuery.of(context).size.height > 780;
     return Row(
       children: [
-        isAndoridsmall
+        IsPixel6
             ? Container(
-                width: 15,
+                width: 20,
               )
-            : Container(
-                width: 14,
-              ),
+            : isAndoridsmall
+                ? Container(
+                    width: 15,
+                  )
+                : Container(
+                    width: 14,
+                  ),
         Container(
           margin: EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(

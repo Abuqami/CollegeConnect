@@ -5,23 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:collegeconnect/utilities/constants.dart';
 import 'package:collegeconnect/widgets/landingPageButtons.dart';
 
-void main() {
-  runApp(Myposts());
-}
-
 class Myposts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      home: Home(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+    final IsPixel6 = MediaQuery.of(context).size.height > 820;
     final isAndoridsmall = MediaQuery.of(context).size.height > 780;
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -86,7 +73,11 @@ class Home extends StatelessWidget {
                   itemCount: 10, itemBuilder: ((context, index) => Post())),
             ),
           ),
-          isAndoridsmall ? AddButton() : AddButtonSmall(),
+          IsPixel6
+              ? AddButtonBig()
+              : isAndoridsmall
+                  ? AddButton()
+                  : AddButtonSmall(),
         ]),
       ),
     );
@@ -104,6 +95,128 @@ class AddButton extends StatelessWidget {
       decoration: BoxDecoration(color: Colors.white),
       height: 100,
       width: 390,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 330,
+          ),
+          GestureDetector(
+            onTap: () {
+              showDialog(
+                  context: context,
+                  builder: ((context) => AlertDialog(
+                        content: Stack(
+                          children: [
+                            Row(
+                              children: [
+                                GestureDetector(
+                                  child: Image.asset(
+                                    'Images/Delete.png',
+                                    width: 20,
+                                    height: 20,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 220,
+                                ),
+                                GestureDetector(
+                                  child: Image.asset(
+                                    'Images/Message.png',
+                                    width: 20,
+                                    height: 20,
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                        title: (Text(
+                          "Post",
+                          textAlign: TextAlign.center,
+                        )),
+                        backgroundColor: Color(0xFFF9DDAC),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        actions: [
+                          Container(
+                            width: 310,
+                            height: 100,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20)),
+                            child: TextField(
+                              onChanged: (value) {},
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Enter Descreption..."),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 50,
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(color: Colors.black),
+                                width: 290,
+                                height: 1,
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {},
+                                child: Image.asset(
+                                  'Images/Album.png',
+                                  width: 25,
+                                  height: 25,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Image.asset(
+                                  'Images/Link.png',
+                                  width: 25,
+                                  height: 25,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      )));
+            },
+            child: Image.asset(
+              'Images/Add.png',
+              width: 60,
+              height: 60,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class AddButtonBig extends StatelessWidget {
+  const AddButtonBig({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(color: Colors.white),
+      height: 100,
+      width: 420,
       child: Row(
         children: [
           SizedBox(
@@ -343,16 +456,21 @@ class Post extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final IsPixel6 = MediaQuery.of(context).size.height > 820;
     final isAndoridsmall = MediaQuery.of(context).size.height > 780;
     return Row(
       children: [
-        isAndoridsmall
+        IsPixel6
             ? Container(
-                width: 8,
+                width: 17,
               )
-            : Container(
-                width: 18,
-              ),
+            : isAndoridsmall
+                ? Container(
+                    width: 8,
+                  )
+                : Container(
+                    width: 18,
+                  ),
         Container(
           margin: EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(

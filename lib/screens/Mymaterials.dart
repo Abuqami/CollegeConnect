@@ -5,23 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:collegeconnect/utilities/constants.dart';
 import 'package:collegeconnect/widgets/landingPageButtons.dart';
 
-void main() {
-  runApp(mymats());
-}
-
 class mymats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      home: Home(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+    final IsPixel6 = MediaQuery.of(context).size.height > 820;
     final isAndoridsmall = MediaQuery.of(context).size.height > 780;
     final isPixel3 = MediaQuery.of(context).size.height > 736;
     return MaterialApp(
@@ -68,10 +55,10 @@ class Home extends StatelessWidget {
                   borderRadius: BorderRadius.only(),
                 ),
               ),
-              isAndoridsmall
+              IsPixel6
                   ? Container(
-                      width: 400,
-                      height: 120,
+                      width: 420,
+                      height: 172,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
@@ -80,17 +67,29 @@ class Home extends StatelessWidget {
                         ),
                       ),
                     )
-                  : Container(
-                      width: 440,
-                      height: 120,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15),
-                          topRight: Radius.circular(15),
+                  : isAndoridsmall
+                      ? Container(
+                          width: 400,
+                          height: 120,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15),
+                            ),
+                          ),
+                        )
+                      : Container(
+                          width: 440,
+                          height: 120,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
               Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -102,49 +101,67 @@ class Home extends StatelessWidget {
                           : isAndoridsmall
                               ? UpperRow()
                               : UpperRowSmall()),
-              isAndoridsmall
+              IsPixel6
                   ? Container(
-                      width: 400,
-                      height: 20,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                    )
-                  : Container(
                       width: 420,
                       height: 20,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                      )),
-              isAndoridsmall
-                  ? BottomRow()
-                  : isPixel3
-                      ? BottomRow()
-                      : isAndoridsmall
-                          ? BottomRowSmall()
-                          : BottomRowSmall(),
-              isAndoridsmall
-                  ? Container(
-                      width: 400,
-                      height: 153.5,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
                       ),
                     )
-                  : isPixel3
+                  : isAndoridsmall
                       ? Container(
-                          width: 420,
-                          height: 148,
+                          width: 400,
+                          height: 20,
                           decoration: BoxDecoration(
                             color: Colors.white,
                           ),
                         )
                       : Container(
                           width: 420,
-                          height: 94,
+                          height: 20,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                          ))
+                          )),
+              IsPixel6
+                  ? BottomRowBig()
+                  : isAndoridsmall
+                      ? BottomRow()
+                      : isPixel3
+                          ? BottomRow()
+                          : isAndoridsmall
+                              ? BottomRowSmall()
+                              : BottomRowSmall(),
+              IsPixel6
+                  ? Container(
+                      width: 420,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                      ),
+                    )
+                  : isAndoridsmall
+                      ? Container(
+                          width: 400,
+                          height: 153.5,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                          ),
+                        )
+                      : isPixel3
+                          ? Container(
+                              width: 420,
+                              height: 148,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                              ),
+                            )
+                          : Container(
+                              width: 420,
+                              height: 94,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                              ))
             ],
           ),
         ),
@@ -218,6 +235,35 @@ class BottomRow extends StatelessWidget {
             Button3(),
           ]),
           width: 390,
+          height: 140,
+          color: Colors.white,
+        ),
+      ],
+    );
+  }
+}
+
+class BottomRowBig extends StatelessWidget {
+  const BottomRowBig({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          child: Row(children: [
+            SizedBox(
+              width: 20,
+            ),
+            Button4(),
+            SizedBox(
+              width: 90,
+            ),
+            Button3(),
+          ]),
+          width: 410,
           height: 140,
           color: Colors.white,
         ),
