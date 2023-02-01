@@ -1,8 +1,10 @@
 import 'package:collegeconnect/screens/ManageCoordinators.dart';
 import 'package:collegeconnect/screens/User_Issues.dart';
+import 'package:collegeconnect/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:collegeconnect/widgets/Curved_background.dart';
 
 class AdminDashboard extends StatelessWidget {
   const AdminDashboard({Key? key}) : super(key: key);
@@ -13,38 +15,11 @@ class AdminDashboard extends StatelessWidget {
       backgroundColor: Color(0xFFF9DDAC),
       body: Column(
         children: [
-          Container(
-            padding: EdgeInsets.only(
-              top: 90,
-              left: 60,
-              right: 60,
-              bottom: 50,
-            ),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    "Admin Dashboard",
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          curved_background(title: 'Admin Dashboard'),
           Expanded(
             flex: 6,
             child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(15),
-                  topLeft: Radius.circular(15),
-                ),
-              ),
+              decoration: curved_backgroundDecoration,
               child: Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Column(
@@ -67,11 +42,11 @@ class AdminDashboard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: 80,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           FaIcon(
                             FontAwesomeIcons.user,
                             size: 35,
@@ -86,7 +61,7 @@ class AdminDashboard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: 400,
                       width: 500,
                       child: Column(
@@ -104,7 +79,7 @@ class AdminDashboard extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(22)),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
+                                children: const [
                                   FaIcon(
                                     FontAwesomeIcons.users,
                                   ),
@@ -131,7 +106,7 @@ class AdminDashboard extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(22)),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
+                                children: const [
                                   FaIcon(FontAwesomeIcons.question),
                                   SizedBox(
                                     height: 5,
@@ -154,3 +129,5 @@ class AdminDashboard extends StatelessWidget {
     );
   }
 }
+
+

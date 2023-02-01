@@ -1,12 +1,11 @@
 import 'package:collegeconnect/screens/Forgot_Password.dart';
-import 'package:collegeconnect/screens/admin_dashboard.dart';
-import 'package:flutter/services.dart';
+import 'package:collegeconnect/widgets/CollegeConnect_TextFormField.dart';
 
-import 'landing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:collegeconnect/utilities/constants.dart';
 import 'package:get/get.dart';
 import 'package:collegeconnect/utilities/Extension.dart';
+import 'package:collegeconnect/widgets/Buttons/MainPagesSubmitButton.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -31,7 +30,7 @@ class _LoginState extends State<Login> {
                 children: [
                   Text(
                     "Login",
-                    style: kApplication_Title_Style,
+                    style: k_Application_Title_Style,
                   ),
                   SizedBox(
                     height: 90,
@@ -42,31 +41,30 @@ class _LoginState extends State<Login> {
                       key: _formKey,
                       child: Column(
                         children: [
-                          TextFormField(
-                            style: TextStyle(fontSize: 15),
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Email',
-                                hintText: 'Example@iau.edu.sa',
-                                counterText: "", //this would hide the counter from counting and adding more space between these two forms
-                            ),
+                          CollegeConnect_TextFormField(
+                            label: 'Email',
+                            hintText: 'Example@iau.edu.sa',
                             validator: (val) {
-                              if (!val!.isValidEmail)
+                              if (!val!.isValidEmail) {
                                 return 'Please enter your email as follows: Example@iau.edu.sa';
+                                return null;
+                              }
+                              return null;
                             },
-                            maxLength: 21,
+                            maxlength: 21,
                           ),
                           SizedBox(
-                            height: 5,
+                            height: 10,
                           ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Password',
-                                hintText: ''),
-                            obscureText: true,
-                            autocorrect: false,
-                            enableSuggestions: false,
+                          CollegeConnect_TextFormField(
+                            label: 'Password',
+                            formObsecureText: true,
+                            validator: (val) {
+                              if (!val!.isValidPassword) {
+                                return "Minimum eight characters, at least one uppercase letter, one lowercase letter\none number and one special character";
+                              }
+                              return null;
+                            },
                           ),
                           SizedBox(
                             height: 5,
@@ -78,16 +76,15 @@ class _LoginState extends State<Login> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Get.to(ForgotPassword());
+                                  Get.to(
+                                    () => ForgotPassword(),
+                                  );
                                 },
-                                child: Text(
-                                  "Forgot Password?",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12,
-                                    color: Color(0xFF199D8C),
-                                    decoration: TextDecoration.underline,
-                                  ),
+                                child: loginPageTexts(
+                                  text: 'Forgot Password?',
+                                  fontsize: 12,
+                                  textDecoration: TextDecoration.underline,
+                                  textFontWeight: FontWeight.bold,
                                 ),
                               ),
                             ],
@@ -95,35 +92,14 @@ class _LoginState extends State<Login> {
                           SizedBox(
                             height: 10,
                           ),
-                          GestureDetector(
-                            onTap: (){
-                              if(!_formKey.currentState!.validate()){
-                                /*Get.snackbar("Error", "Please Enter Your Information properly",
-                                snackPosition: SnackPosition.TOP,
-                                  margin: EdgeInsets.only(top: 10)
-                                );*/
-                              } else{
-                                Get.to(AdminDashboard());
-                              }
+                          MainPagesSubmitButton(
+                            formKey: _formKey,
+                            buttonText: 'Login',
+                            onTap: () {
+                              if (!_formKey.currentState!.validate()) {
+                              } else {}
                             },
-                            child: Container(
-                              width: 235,
-                              height: 40,
-
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Color(0xFFF9DDAC),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Login',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 17),
-                                ),
-                              ),
-                            ),
+                            width: 235,
                           ),
                         ],
                       ),
@@ -136,29 +112,47 @@ class _LoginState extends State<Login> {
               alignment: Alignment.bottomCenter,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Do not have an account? ",
-                    style: TextStyle(
-                      color: Color(0xFF199D8C),
-                    ),
+                children: const [
+                  loginPageTexts(
+                    text: 'Do not have an account? ',
                   ),
-                  Text(
-                    "Create new account",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF199D8C),
-                      decoration: TextDecoration.underline,
-                    ),
+                  loginPageTexts(
+                    textFontWeight: FontWeight.bold,
+                    text: 'Create new account',
+                    textDecoration: TextDecoration.underline,
                   ),
                 ],
               ),
             ),
             SizedBox(
               height: 10,
-            )
+            ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+
+
+class loginPageTexts extends StatelessWidget {
+  const loginPageTexts(
+      {this.text, this.textFontWeight, this.textDecoration, this.fontsize});
+  final String? text;
+  final TextDecoration? textDecoration;
+  final FontWeight? textFontWeight;
+  final double? fontsize;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "$text",
+      style: TextStyle(
+        fontWeight: textFontWeight,
+        color: Color(0xFF199D8C),
+        decoration: textDecoration,
+        fontSize: fontsize,
       ),
     );
   }

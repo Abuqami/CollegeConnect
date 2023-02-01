@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'admin_dashboard.dart';
+import 'package:collegeconnect/utilities/constants.dart';
+import 'package:collegeconnect/widgets/Curved_background.dart';
+import 'package:collegeconnect/widgets/Buttons/backbutton.dart';
 
 class UserIssues extends StatelessWidget {
   const UserIssues({Key? key}) : super(key: key);
@@ -16,43 +19,14 @@ class UserIssues extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(
-                onTap: (){
-                  Get.to(() => AdminDashboard());
-                },
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: FaIcon(FontAwesomeIcons.arrowLeft),
-                ),
-              ),
+              child: backbutton(),
             ),
-            Container(
-              padding: EdgeInsets.only(
-                top: 90,
-                left: 60,
-                right: 60,
-                bottom: 50,
-              ),
-              child: Center(
-                child: Text(
-                  "User Issues",
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
+
+            curved_background(title: 'User Issues'),
             Expanded(
               flex: 6,
               child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(15),
-                    topLeft: Radius.circular(15),
-                  ),
-                ),
+                decoration: curved_backgroundDecoration,
                 child: Column(
                   children: [
                     SizedBox(
@@ -65,7 +39,7 @@ class UserIssues extends StatelessWidget {
                           //responsible for making widgets scrollable
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const [
                               UserIssue_information(),
                               UserIssue_information(),
                               UserIssue_information(),
@@ -109,9 +83,31 @@ class UserIssue_information extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: Icon(Icons.minimize),
+            GestureDetector(
+              onTap: (){
+                Get.defaultDialog(
+                    title: "are you sure about deleting this issue?",
+                    onCancel: (){
+                      //cancel the process?
+                    },
+                    onConfirm: (){
+                      //when it comes do deleting widgets, we will use this block of area for conforming the deletion process
+                    },
+                    cancelTextColor: Colors.red,
+                    confirmTextColor: Colors.black,
+                    titleStyle: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black
+                    ),
+                    buttonColor: Colors.white,
+                    middleText: 'i have an issue regardingrifmrunfrnfrufrfkmrfrmfmrrnmfuirmnfirmfrfrfnrfunur'
+                );
+              },
+              child: Align(
+                alignment: Alignment.topRight,
+                child: Icon(Icons.minimize),
+              ),
             ),
             Flexible(
               child: Align(
@@ -119,7 +115,7 @@ class UserIssue_information extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   textBaseline: TextBaseline.alphabetic,
-                  children: [
+                  children: const [
                     Flexible(
                       child: Text(
                         "2180000434@iau.edu.sa ",
@@ -131,7 +127,7 @@ class UserIssue_information extends StatelessWidget {
                     Text("21/02/1999"),
                     Flexible(
                       child: Text(
-                        'i have an issue regarding',
+                        'Hey, I have an issue regarding this thing which turns the ', // the text will not be shown as a whole within the container so admin need to press the right forward button to read the full text
                         style: TextStyle(fontSize: 15),
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -142,7 +138,9 @@ class UserIssue_information extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.bottomRight,
-              child: Icon(Icons.arrow_forward),
+              child: GestureDetector(onTap: (){
+                Get.defaultDialog(title: '...اهلا وسهلاً استاذ',content: Text("هنا من المفترض تنعرض باقي شكوى المستخدم "),);
+              },child: Icon(Icons.arrow_forward)),
             ),
           ],
         ),

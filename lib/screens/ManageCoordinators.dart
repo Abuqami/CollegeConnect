@@ -1,6 +1,13 @@
+import 'package:collegeconnect/widgets/CollegeConnect_TextFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:collegeconnect/widgets/Buttons/DeleteUpdateButtons.dart';
+import 'package:collegeconnect/utilities/constants.dart';
+import 'package:collegeconnect/widgets/Buttons/dialogSubmitButton.dart';
+import 'package:collegeconnect/widgets/Curved_background.dart';
+import 'package:collegeconnect/widgets/Buttons/backbutton.dart';
+import 'package:collegeconnect/widgets/Buttons/DeleteUpdateButtons.dart';
 
 class ManageCoordinator extends StatelessWidget {
   const ManageCoordinator({Key? key}) : super(key: key);
@@ -8,9 +15,45 @@ class ManageCoordinator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFF199D8C),
-        onPressed: () {},
+        onPressed: () {
+          Get.defaultDialog(
+            title: "Add coordinator information",
+            content: Column(
+              children: [
+                CollegeConnect_TextFormField(
+                  label: 'Email',
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                CollegeConnect_TextFormField(
+                  label: 'Fname',
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                CollegeConnect_TextFormField(
+                  label: 'Lname',
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                CollegeConnect_TextFormField(
+                  label: 'Username',
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                dialogSubmitButton(
+                  onPressed: () {},
+                ),
+              ],
+            ),
+          );
+        },
         child: FaIcon(
           FontAwesomeIcons.plus,
           color: Colors.white,
@@ -23,52 +66,23 @@ class ManageCoordinator extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: FaIcon(FontAwesomeIcons.arrowLeft),
-                  ),
-                ),
+                child: backbutton(),
               ),
-              Container(
-                padding: EdgeInsets.only(
-                  top: 60,
-                  left: 60,
-                  right: 60,
-                  bottom: 50,
-                ),
-                child: Text(
-                  "Manage Coordinators",
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              curved_background(title: 'Manage Coordinators',),
               Expanded(
                 flex: 6,
                 child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(15),
-                      topLeft: Radius.circular(15),
-                      bottomRight: Radius.circular(1000),
-                    ),
-                  ),
+                  decoration: curved_backgroundDecoration,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Container(
+                      SizedBox(
                         width: 300,
                         height: 300,
                         child: SingleChildScrollView(
                           child: Column(
-                            children: [
+                            children: const [
                               Coordinators(
                                 kcoordinator_Name: "Mohammed",
                                 kcoordinator_UserName: "Mohammed",
@@ -134,12 +148,12 @@ class ManageCoordinator extends StatelessWidget {
   }
 }
 
+//CHECK بكره
 class Coordinators extends StatelessWidget {
-  Coordinators(
-      {this.kcoordinator_Name,
-      this.kcoordinator_UserName,
-      this.KeducationalResourceIcon});
-  final IconData? KeducationalResourceIcon;
+  const Coordinators({
+    this.kcoordinator_Name,
+    this.kcoordinator_UserName,
+  });
   final String? kcoordinator_Name;
   final String? kcoordinator_UserName;
 
@@ -164,15 +178,17 @@ class Coordinators extends StatelessWidget {
                   width: 10,
                 ),
                 Flexible(
-                  flex: 1,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Flexible(
-                        child: Text("$kcoordinator_Name"),
-                      ),
-                      Flexible(
-                        child: Text("@$kcoordinator_UserName"),
+                          child: Text(
+                        "$kcoordinator_Name",
+                        overflow: TextOverflow.ellipsis,
+                      )),
+                      Text(
+                        "@$kcoordinator_UserName",
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),
@@ -180,25 +196,48 @@ class Coordinators extends StatelessWidget {
               ],
             ),
           ),
+          Delete_UpdateButtons(
+            edit_onTap: (){
+              Get.defaultDialog(title: "Update Coordinator Information",
+                content: Column(
+                  children: [
+                    CollegeConnect_TextFormField(label: 'Email',),
+                    SizedBox(height: 5,),
+                    CollegeConnect_TextFormField(label: 'Fname',),
+                    SizedBox(height: 5,),
+                    CollegeConnect_TextFormField(label: 'Lname',),
+                    SizedBox(height: 5,),
+                    CollegeConnect_TextFormField(label: 'Username',),
+                    SizedBox(height: 5,),
+                    dialogSubmitButton(onPressed: (){},),
+                  ],
+                ),
+              );
+            },
+            delete_onTap: (){
+              Get.defaultDialog(
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              FaIcon(
-                FontAwesomeIcons.pen,
-                size: 18,
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              FaIcon(
-                FontAwesomeIcons.minus,
-                size: 18,
-              ),
-              SizedBox(
-                width: 10,
-              )
-            ],
+                title: "Warning!",
+                onCancel: () {
+                  //cancel the process?
+                },
+                onConfirm: () {
+                  //when it comes do deleting widgets, we will use this block of area for conforming the deletion process
+                },
+                cancelTextColor: Colors.red,
+                confirmTextColor: Colors.black,
+                titleStyle: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+                buttonColor: Colors.white,
+                middleText: "are you sure about deleting Mohammed?", //user name should come from Database...
+              );
+            },
+
+
+
+
           ),
         ],
       ),

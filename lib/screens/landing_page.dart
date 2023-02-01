@@ -1,7 +1,7 @@
 import 'package:collegeconnect/screens/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:collegeconnect/utilities/constants.dart';
-import 'package:collegeconnect/widgets/landingPageButtons.dart';
+import 'package:collegeconnect/widgets/Buttons/landingPageButtons.dart';
 import 'package:get/get.dart';
 //import 'package:sizer/sizer.dart';
 class landingpage extends StatelessWidget {
@@ -20,9 +20,9 @@ class landingpage extends StatelessWidget {
               Container(
 
                 child: Column(
-                  children: [
-                    Text("College", style: kApplication_Title_Style),
-                    Text("Connect", style: kApplication_Title_Style),
+                  children: const [
+                    Text("College", style: k_Application_Title_Style),
+                    Text("Connect", style: k_Application_Title_Style),
                   ],
                 ),
               ),

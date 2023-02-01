@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:collegeconnect/utilities/constants.dart';
 
 class NavigateMajors extends StatelessWidget {
   const NavigateMajors({Key? key}) : super(key: key);
@@ -22,13 +22,10 @@ class NavigateMajors extends StatelessWidget {
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
+                  children: const [
                     Text(
                       "Navigate Majors",
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: k_InterfacesTitleStyle
                     ),
                   ],
                 ),
@@ -51,7 +48,7 @@ class NavigateMajors extends StatelessWidget {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Major(img: "Images/CIS.png", MajorName: "CIS",),
                           Major(img: "Images/AImajor.png", MajorName: "AI",),
                         ],
@@ -59,7 +56,7 @@ class NavigateMajors extends StatelessWidget {
                       SizedBox(height: 20,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Major(img: "Images/CYSmajor.png", MajorName: "CYS"),
                           Major(img: "Images/CSmajor.png", MajorName: "CS",),
                         ],
@@ -78,7 +75,7 @@ class NavigateMajors extends StatelessWidget {
 }
 
 class Major extends StatelessWidget {
-  Major({this.img, this.MajorName});
+  const Major({this.img, this.MajorName});
 
 final String? img;
 final String? MajorName;
@@ -113,7 +110,7 @@ class Navbar extends StatelessWidget {
     return NavigationBar(
       backgroundColor: Color(0xFFF9DDAC),
       height: 50,
-      destinations: [
+      destinations: const [
         NavigationDestination(
           icon: Icon(Icons.home_outlined),
           selectedIcon: Icon(Icons.home_outlined),
