@@ -12,7 +12,6 @@ class Homepage extends StatelessWidget {
     final isAndoridsmall = MediaQuery.of(context).size.height > 780;
     final isPixel3 = MediaQuery.of(context).size.height > 736;
     return Scaffold(
-      bottomNavigationBar: Navbar(),
       backgroundColor: Color(0xFFF9DDAC),
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -62,8 +61,101 @@ class Homepage extends StatelessWidget {
                   itemCount: 10, itemBuilder: ((context, index) => Post())),
             ),
           ),
+          Bottom_Bar()
         ]),
       ),
+    );
+  }
+}
+
+class Bottom_Bar extends StatelessWidget {
+  const Bottom_Bar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      child: Row(children: [
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 80,
+            decoration: BoxDecoration(color: Color.fromARGB(255, 25, 157, 140)),
+            child: Padding(
+              padding: const EdgeInsets.all(13),
+              child: Image.asset(
+                'Images/House.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 80,
+            decoration:
+                BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
+            child: Padding(
+              padding: const EdgeInsets.all(7),
+              child: Image.asset(
+                'Images/people.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 80,
+            decoration:
+                BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Image.asset(
+                'Images/Books.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 80,
+            decoration:
+                BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
+            child: Padding(
+              padding: const EdgeInsets.all(11),
+              child: Image.asset(
+                'Images/Many_people.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 5,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 80,
+            decoration:
+                BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Image.asset(
+                'Images/guy.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+      ]),
     );
   }
 }
@@ -365,47 +457,6 @@ class Post extends StatelessWidget {
             ),
           ]),
         ),
-      ],
-    );
-  }
-}
-
-class Navbar extends StatelessWidget {
-  const Navbar({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return NavigationBar(
-      backgroundColor: Color(0xFFF9DDAC),
-      height: 60,
-      destinations: [
-        NavigationDestination(
-          icon: Icon(Icons.home_outlined),
-          selectedIcon: Icon(Icons.home_outlined),
-          label: 'ㅤ',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.reduce_capacity_rounded),
-          selectedIcon: Icon(Icons.reduce_capacity_rounded),
-          label: 'ㅤ',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.menu_book_rounded),
-          selectedIcon: Icon(Icons.menu_book_rounded),
-          label: 'ㅤ',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.group_outlined),
-          selectedIcon: Icon(Icons.group_outlined),
-          label: 'ㅤ',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.person),
-          selectedIcon: Icon(Icons.sd_card_alert),
-          label: 'ㅤ',
-        )
       ],
     );
   }

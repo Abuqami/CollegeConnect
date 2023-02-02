@@ -7,41 +7,11 @@ import 'package:collegeconnect/widgets/landingPageButtons.dart';
 class myacc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final IsPixel6 = MediaQuery.of(context).size.height > 820;
     final isAndoridsmall = MediaQuery.of(context).size.height > 780;
     final isPixel3 = MediaQuery.of(context).size.height > 736;
 
     return Scaffold(
-        bottomNavigationBar: NavigationBar(
-          backgroundColor: Color(0xFFF9DDAC),
-          height: 60,
-          destinations: [
-            NavigationDestination(
-              icon: Icon(Icons.home_outlined),
-              selectedIcon: Icon(Icons.home_outlined),
-              label: 'ㅤ',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.reduce_capacity_rounded),
-              selectedIcon: Icon(Icons.reduce_capacity_rounded),
-              label: 'ㅤ',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.menu_book_rounded),
-              selectedIcon: Icon(Icons.menu_book_rounded),
-              label: 'ㅤ',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.group_outlined),
-              selectedIcon: Icon(Icons.group_outlined),
-              label: 'ㅤ',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.person),
-              selectedIcon: Icon(Icons.sd_card_alert),
-              label: 'ㅤ',
-            )
-          ],
-        ),
         backgroundColor: Color(0xFFF9DDAC),
         body: SafeArea(
           child: Column(children: [
@@ -82,25 +52,30 @@ class myacc extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white,
                   ),
-                  child: isPixel3
-                      ? RowUp()
-                      : isAndoridsmall
+                  child: IsPixel6
+                      ? RowUpBig()
+                      : isPixel3
                           ? RowUp()
-                          : RowUpSmall()),
+                          : isAndoridsmall
+                              ? RowUp()
+                              : RowUpSmall()),
             ),
             Row(
               children: [
-                isPixel3
-                    ? Bottom()
-                    : isAndoridsmall
+                IsPixel6
+                    ? BottomBig()
+                    : isPixel3
                         ? Bottom()
-                        : BottomSmall()
+                        : isAndoridsmall
+                            ? Bottom()
+                            : BottomSmall()
               ],
             ),
             Container(
               height: 50,
               decoration: BoxDecoration(color: Colors.white),
-            )
+            ),
+            Bottom_Bar()
           ]),
         ));
   }
@@ -178,6 +153,42 @@ class RowUpSmall extends StatelessWidget {
   }
 }
 
+class RowUpBig extends StatelessWidget {
+  const RowUpBig({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          width: 30,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Button5.png',
+            width: 130,
+            height: 120,
+          ),
+        ),
+        SizedBox(
+          width: 90,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Button6.png',
+            width: 130,
+            height: 120,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class Bottom extends StatelessWidget {
   const Bottom({
     Key? key,
@@ -246,6 +257,45 @@ class BottomSmall extends StatelessWidget {
             'Images/Button8.png',
             width: 130,
             height: 130,
+          ),
+        ),
+      ]),
+      width: 410,
+      height: 150,
+      color: Colors.white,
+    );
+  }
+}
+
+class BottomBig extends StatelessWidget {
+  const BottomBig({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(children: [
+        SizedBox(
+          width: 30,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Button7.png',
+            width: 130,
+            height: 130,
+          ),
+        ),
+        SizedBox(
+          width: 90,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Image.asset(
+            'Images/Button8.png',
+            width: 135,
+            height: 120,
           ),
         ),
       ]),
@@ -332,5 +382,97 @@ class UpperPartsmall extends StatelessWidget {
       Text("Mohammed Ali"),
       Text("@Mohammed"),
     ]);
+  }
+}
+
+class Bottom_Bar extends StatelessWidget {
+  const Bottom_Bar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      child: Row(children: [
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 80,
+            decoration:
+                BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
+            child: Padding(
+              padding: const EdgeInsets.all(13),
+              child: Image.asset(
+                'Images/House.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 80,
+            decoration:
+                BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
+            child: Padding(
+              padding: const EdgeInsets.all(7),
+              child: Image.asset(
+                'Images/people.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 80,
+            decoration:
+                BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Image.asset(
+                'Images/Books.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 80,
+            decoration:
+                BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Image.asset(
+                'Images/Many_people.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 5,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 86,
+            decoration: BoxDecoration(color: Color.fromARGB(255, 25, 157, 140)),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Image.asset(
+                'Images/guy.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+      ]),
+    );
   }
 }

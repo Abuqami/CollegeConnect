@@ -1,5 +1,8 @@
+import 'package:collegeconnect/screens/Community.dart';
 import 'package:collegeconnect/screens/Forgot_Password.dart';
+import 'package:collegeconnect/screens/Homepage.dart';
 import 'package:collegeconnect/screens/Login.dart';
+import 'package:collegeconnect/screens/Myaccount.dart';
 import 'package:collegeconnect/screens/landing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +19,7 @@ class CollegeConnect extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
-        child: landingpage(),
+        child: Homepage(),
       ),
     );
   }
