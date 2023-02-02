@@ -61,7 +61,7 @@ class Homepage extends StatelessWidget {
                   itemCount: 10, itemBuilder: ((context, index) => Post())),
             ),
           ),
-          Bottom_Bar()
+          IsPixel6 ? Bottom_Bar() : Bottom_BarSmall()
         ]),
       ),
     );
@@ -144,6 +144,95 @@ class Bottom_Bar extends StatelessWidget {
           onTap: () {},
           child: Container(
             width: 80,
+            decoration:
+                BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Image.asset(
+                'Images/guy.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+      ]),
+    );
+  }
+}
+
+class Bottom_BarSmall extends StatelessWidget {
+  const Bottom_BarSmall({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      child: Row(children: [
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 80,
+            decoration: BoxDecoration(color: Color.fromARGB(255, 25, 157, 140)),
+            child: Padding(
+              padding: const EdgeInsets.all(13),
+              child: Image.asset(
+                'Images/House.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 80,
+            decoration:
+                BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
+            child: Padding(
+              padding: const EdgeInsets.all(7),
+              child: Image.asset(
+                'Images/people.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 80,
+            decoration:
+                BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Image.asset(
+                'Images/Books.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 80,
+            decoration:
+                BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
+            child: Padding(
+              padding: const EdgeInsets.all(11),
+              child: Image.asset(
+                'Images/Many_people.png',
+                height: 40,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 71,
             decoration:
                 BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
             child: Padding(
