@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 class cont extends StatelessWidget {
-  cont({ this.colour, this.ktext, this.tap });
+  const cont({ this.colour, this.ktext, this.tap });
 
   final Color? colour;
   final String? ktext;
@@ -23,7 +23,7 @@ class cont extends StatelessWidget {
           alignment: Alignment.center,
           child: Text(
             "$ktext",
-            style: kLandingPageButtonsTextStyle,
+            style: k_LandingPageButtonsTextStyle,
           ),
         ),
       ),
