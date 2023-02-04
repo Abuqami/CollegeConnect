@@ -1,8 +1,13 @@
+import 'package:collegeconnect/screens/MyApp4.dart';
+import 'package:collegeconnect/screens/Preference.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:collegeconnect/utilities/constants.dart';
+
+import 'Myaccount.dart';
+import 'ToDo.dart';
 
 class mymatsalt extends StatelessWidget {
   @override
@@ -20,7 +25,9 @@ class mymatsalt extends StatelessWidget {
               Row(
                 children: [
                   GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(MyApp4());
+                      },
                       child: Icon(
                         Icons.arrow_back,
                         size: 30,
@@ -289,100 +296,6 @@ class UpperRowSmall extends StatelessWidget {
   }
 }
 
-class BottomRow extends StatelessWidget {
-  const BottomRow({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          child: Row(children: [
-            SizedBox(
-              width: 20,
-            ),
-            Button4(),
-            SizedBox(
-              width: 90,
-            ),
-            Button3(),
-          ]),
-          width: 390,
-          height: 140,
-          color: Colors.white,
-        ),
-      ],
-    );
-  }
-}
-
-class BottomRowSmall extends StatelessWidget {
-  const BottomRowSmall({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          child: Row(children: [
-            SizedBox(
-              width: 20,
-            ),
-            Button4(),
-            SizedBox(
-              width: 112,
-            ),
-            Button3(),
-          ]),
-          width: 410,
-          height: 140,
-          color: Colors.white,
-        ),
-      ],
-    );
-  }
-}
-
-class Button3 extends StatelessWidget {
-  const Button3({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Image.asset(
-        'Images/Button3.png',
-        width: 125,
-        height: 130,
-      ),
-    );
-  }
-}
-
-class Button4 extends StatelessWidget {
-  const Button4({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Image.asset(
-        'Images/Button4.png',
-        width: 130,
-        height: 130,
-      ),
-    );
-  }
-}
-
 class Button2 extends StatelessWidget {
   const Button2({
     Key? key,
@@ -391,7 +304,9 @@ class Button2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(ToDo());
+      },
       child: Image.asset(
         'Images/Button2.png',
         width: 130,
@@ -409,7 +324,9 @@ class Button1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(HomePreference());
+      },
       child: Image.asset(
         'Images/Button1.png',
         width: 130,

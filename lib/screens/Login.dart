@@ -1,4 +1,6 @@
 import 'package:collegeconnect/screens/Forgot_Password.dart';
+import 'package:collegeconnect/screens/Homepage.dart';
+import 'package:collegeconnect/screens/MyApp1.dart';
 import 'package:collegeconnect/widgets/CollegeConnect_TextFormField.dart';
 
 import 'package:flutter/material.dart';
@@ -96,6 +98,7 @@ class _LoginState extends State<Login> {
                             formKey: _formKey,
                             buttonText: 'Login',
                             onTap: () {
+                              Get.to(Homepage());
                               if (!_formKey.currentState!.validate()) {
                               } else {}
                             },
@@ -120,7 +123,7 @@ class _LoginState extends State<Login> {
                     textFontWeight: FontWeight.bold,
                     text: 'Create new account',
                     textDecoration: TextDecoration.underline,
-                  ),
+                  )
                 ],
               ),
             ),
@@ -134,8 +137,6 @@ class _LoginState extends State<Login> {
   }
 }
 
-
-
 class loginPageTexts extends StatelessWidget {
   const loginPageTexts(
       {this.text, this.textFontWeight, this.textDecoration, this.fontsize});
@@ -146,13 +147,18 @@ class loginPageTexts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      "$text",
-      style: TextStyle(
-        fontWeight: textFontWeight,
-        color: Color(0xFF199D8C),
-        decoration: textDecoration,
-        fontSize: fontsize,
+    return GestureDetector(
+      onTap: () {
+        Get.to(MyApp1());
+      },
+      child: Text(
+        "$text",
+        style: TextStyle(
+          fontWeight: textFontWeight,
+          color: Color(0xFF199D8C),
+          decoration: textDecoration,
+          fontSize: fontsize,
+        ),
       ),
     );
   }

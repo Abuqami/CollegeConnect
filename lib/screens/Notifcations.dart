@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:collegeconnect/utilities/constants.dart';
 
+import 'Myaccount.dart';
+
 class Notfs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,9 @@ class Notfs extends StatelessWidget {
           Row(
             children: [
               GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(myacc());
+                  },
                   child: Icon(
                     Icons.arrow_back,
                     size: 30,

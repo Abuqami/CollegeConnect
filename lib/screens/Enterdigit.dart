@@ -1,3 +1,5 @@
+import 'package:collegeconnect/screens/Login.dart';
+import 'package:collegeconnect/screens/MyApp3.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
@@ -89,7 +91,12 @@ class Enterdigit extends StatelessWidget {
             Container(
               child: Column(
                 children: [
-                  cont(ktext: "Verify", colour: Color(0xFFF9DDAC), tap: () {}),
+                  cont(
+                      ktext: "Verify",
+                      colour: Color(0xFFF9DDAC),
+                      tap: () {
+                        Get.to(Login());
+                      }),
                 ],
               ),
             ),
@@ -113,7 +120,9 @@ class Enterdigit extends StatelessWidget {
                   margin: EdgeInsets.all(10),
                   alignment: Alignment.center,
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(MyApp3());
+                    },
                     child: Image.asset(
                       'Images/Greenbutton.png',
                       width: 140,

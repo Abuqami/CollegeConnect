@@ -127,10 +127,15 @@ class Materials extends StatelessWidget {
                                     SizedBox(
                                       width: 321,
                                     ),
-                                    Image.asset(
-                                      'Images/Delete.png',
-                                      width: 20,
-                                      height: 20,
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Image.asset(
+                                        'Images/Delete.png',
+                                        width: 20,
+                                        height: 20,
+                                      ),
                                     ),
                                   ],
                                 ),

@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:collegeconnect/utilities/constants.dart';
 
+import 'Myaccount.dart';
+
 class Myposts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,9 @@ class Myposts extends StatelessWidget {
           Row(
             children: [
               GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(myacc());
+                  },
                   child: Icon(
                     Icons.arrow_back,
                     size: 30,
@@ -507,7 +511,9 @@ class Post extends StatelessWidget {
                             ),
                             actions: [
                               TextButton(
-                                  onPressed: (() {}),
+                                  onPressed: (() {
+                                    Navigator.pop(context);
+                                  }),
                                   child: Text(
                                     'Cancel',
                                     style: TextStyle(
@@ -572,13 +578,11 @@ class Post extends StatelessWidget {
                         width: 30,
                       ),
                       GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(
-                          'Images/Heart.png',
-                          width: 15,
-                          height: 15,
-                        ),
-                      ),
+                          onTap: () {},
+                          child: Icon(
+                            Icons.favorite_outline_outlined,
+                            size: 18,
+                          )),
                       Text("12"),
                       GestureDetector(
                         onTap: () {

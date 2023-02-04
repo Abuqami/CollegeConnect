@@ -1,3 +1,5 @@
+import 'package:collegeconnect/screens/Chat.dart';
+import 'package:collegeconnect/screens/Myaccount.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +19,9 @@ class Mychats extends StatelessWidget {
           Row(
             children: [
               GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(myacc());
+                  },
                   child: Icon(
                     Icons.arrow_back,
                     size: 30,
@@ -80,94 +84,100 @@ class Group extends StatelessWidget {
     final isPixel3 = MediaQuery.of(context).size.height > 736;
     return Row(
       children: [
-        Container(
-          height: 80,
-          margin: EdgeInsets.symmetric(vertical: 10),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Row(children: [
-            Container(
-              child: Row(children: [
-                SizedBox(
-                  width: 10,
-                ),
-                Image.asset(
-                  'Images/Blackprofile.png',
-                  width: 40,
-                  height: 40,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  width: 300,
-                  height: 100,
-                  decoration: BoxDecoration(color: Colors.white),
-                  child: Row(children: [
-                    Column(
-                      children: [
-                        Container(
+        GestureDetector(
+          onTap: () {
+            Get.to(Chat());
+          },
+          child: Container(
+            height: 80,
+            margin: EdgeInsets.symmetric(vertical: 10),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Row(children: [
+              Container(
+                child: Row(children: [
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Image.asset(
+                    'Images/Blackprofile.png',
+                    width: 40,
+                    height: 40,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    width: 300,
+                    height: 100,
+                    decoration: BoxDecoration(color: Colors.white),
+                    child: Row(children: [
+                      Column(
+                        children: [
+                          Container(
+                              width: 100,
+                              height: 50,
+                              decoration: BoxDecoration(color: Colors.white),
+                              child: Column(children: [
+                                SizedBox(
+                                  height: 23,
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "CIS-level 8",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                              ])),
+                          Container(
                             width: 100,
+                            height: 30,
+                            decoration: BoxDecoration(color: Colors.white),
+                            child: Text(
+                              " Guys I have a... ",
+                              style:
+                                  TextStyle(fontSize: 13, color: Colors.grey),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            width: 170,
                             height: 50,
                             decoration: BoxDecoration(color: Colors.white),
-                            child: Column(children: [
-                              SizedBox(
-                                height: 23,
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "CIS-level 8",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                            ])),
-                        Container(
-                          width: 100,
-                          height: 30,
-                          decoration: BoxDecoration(color: Colors.white),
-                          child: Text(
-                            " Guys I have a... ",
-                            style: TextStyle(fontSize: 13, color: Colors.grey),
                           ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          width: 170,
-                          height: 50,
-                          decoration: BoxDecoration(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        SizedBox(
-                          height: 25,
-                        ),
-                        Row(
-                          children: [
-                            Text("15M"),
-                          ],
-                        )
-                      ],
-                    )
-                  ]),
-                ),
-              ]),
-            ),
-          ]),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: 25,
+                          ),
+                          Row(
+                            children: [
+                              Text("15M"),
+                            ],
+                          )
+                        ],
+                      )
+                    ]),
+                  ),
+                ]),
+              ),
+            ]),
+          ),
         ),
       ],
     );

@@ -1,3 +1,8 @@
+import 'package:collegeconnect/screens/Educational_Resources.dart';
+import 'package:collegeconnect/screens/MyPosts.dart';
+import 'package:collegeconnect/screens/Myaccount.dart';
+import 'package:collegeconnect/screens/Preference.dart';
+import 'package:collegeconnect/screens/ToDo.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,7 +25,9 @@ class mymats extends StatelessWidget {
               Row(
                 children: [
                   GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(myacc());
+                      },
                       child: Icon(
                         Icons.arrow_back,
                         size: 30,
@@ -134,7 +141,7 @@ class mymats extends StatelessWidget {
               IsPixel6
                   ? Container(
                       width: 420,
-                      height: 200,
+                      height: 225,
                       decoration: BoxDecoration(
                         color: Colors.white,
                       ),
@@ -176,15 +183,24 @@ class UpperRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final IsPixel6 = MediaQuery.of(context).size.height > 820;
     return Row(
       children: [
-        SizedBox(
-          width: 20,
-        ),
+        IsPixel6
+            ? SizedBox(
+                width: 30,
+              )
+            : SizedBox(
+                width: 20,
+              ),
         Button1(),
-        SizedBox(
-          width: 90,
-        ),
+        IsPixel6
+            ? SizedBox(
+                width: 80,
+              )
+            : SizedBox(
+                width: 85,
+              ),
         Button2(),
       ],
     );
@@ -220,6 +236,7 @@ class BottomRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final IsPixel6 = MediaQuery.of(context).size.height > 820;
     return Row(
       children: [
         Container(
@@ -254,11 +271,11 @@ class BottomRowBig extends StatelessWidget {
         Container(
           child: Row(children: [
             SizedBox(
-              width: 20,
+              width: 30,
             ),
             Button4(),
             SizedBox(
-              width: 90,
+              width: 85,
             ),
             Button3(),
           ]),
@@ -308,7 +325,9 @@ class Button3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(Myposts());
+      },
       child: Image.asset(
         'Images/Button3.png',
         width: 125,
@@ -326,7 +345,9 @@ class Button4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(Educational_Resources());
+      },
       child: Image.asset(
         'Images/Button4.png',
         width: 130,
@@ -344,7 +365,9 @@ class Button2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(ToDo());
+      },
       child: Image.asset(
         'Images/Button2.png',
         width: 130,
@@ -362,7 +385,9 @@ class Button1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(HomePreference());
+      },
       child: Image.asset(
         'Images/Button1.png',
         width: 130,

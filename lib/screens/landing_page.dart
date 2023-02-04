@@ -1,8 +1,10 @@
 import 'package:collegeconnect/screens/Login.dart';
+import 'package:collegeconnect/screens/MyApp1.dart';
 import 'package:flutter/material.dart';
 import 'package:collegeconnect/utilities/constants.dart';
 import 'package:collegeconnect/widgets/Buttons/landingPageButtons.dart';
 import 'package:get/get.dart';
+
 //import 'package:sizer/sizer.dart';
 class landingpage extends StatelessWidget {
   const landingpage({Key? key}) : super(key: key);
@@ -18,7 +20,6 @@ class landingpage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-
                 child: Column(
                   children: const [
                     Text("College", style: k_Application_Title_Style),
@@ -37,10 +38,12 @@ class landingpage extends StatelessWidget {
               Container(
                 child: Column(
                   children: [
-                    cont( ktext: "Get Started", colour: Color(0xFFF9DDAC),
-                    tap: (){
-                      Get.to(Login());
-                    },
+                    cont(
+                      ktext: "Get Started",
+                      colour: Color(0xFFF9DDAC),
+                      tap: () {
+                        Get.to(MyApp1());
+                      },
                     ),
                     SizedBox(
                       height: 10,
@@ -48,8 +51,8 @@ class landingpage extends StatelessWidget {
                     cont(
                       colour: Color(0xFF199D8C),
                       ktext: "Already have an account?",
-                      tap: (){
-
+                      tap: () {
+                        Get.to(Login());
                       },
                     ),
                   ],
@@ -62,5 +65,3 @@ class landingpage extends StatelessWidget {
     );
   }
 }
-
-

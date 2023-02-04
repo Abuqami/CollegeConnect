@@ -1,7 +1,17 @@
+import 'package:collegeconnect/screens/Edit_Profile.dart';
+import 'package:collegeconnect/screens/My_chats.dart';
+import 'package:collegeconnect/screens/Mymaterials.dart';
+import 'package:collegeconnect/screens/Mymaterials_Alt.dart';
+import 'package:collegeconnect/screens/Notifcations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:collegeconnect/utilities/constants.dart';
+
+import 'Community.dart';
+import 'ContactMentors.dart';
+import 'Homepage.dart';
+import 'Navigate Majors.dart';
 
 class myacc extends StatelessWidget {
   @override
@@ -93,7 +103,9 @@ class RowUp extends StatelessWidget {
           width: 20,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(EditProfile());
+          },
           child: Image.asset(
             'Images/Button5.png',
             width: 130,
@@ -104,7 +116,9 @@ class RowUp extends StatelessWidget {
           width: 90,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(mymats());
+          },
           child: Image.asset(
             'Images/Button6.png',
             width: 130,
@@ -129,7 +143,9 @@ class RowUpSmall extends StatelessWidget {
           width: 20,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(EditProfile());
+          },
           child: Image.asset(
             'Images/Button5.png',
             width: 130,
@@ -140,7 +156,9 @@ class RowUpSmall extends StatelessWidget {
           width: 110,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(mymats());
+          },
           child: Image.asset(
             'Images/Button6.png',
             width: 130,
@@ -165,7 +183,9 @@ class RowUpBig extends StatelessWidget {
           width: 30,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(EditProfile());
+          },
           child: Image.asset(
             'Images/Button5.png',
             width: 130,
@@ -176,7 +196,9 @@ class RowUpBig extends StatelessWidget {
           width: 90,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(mymats());
+          },
           child: Image.asset(
             'Images/Button6.png',
             width: 130,
@@ -201,7 +223,9 @@ class Bottom extends StatelessWidget {
           width: 20,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(Notfs());
+          },
           child: Image.asset(
             'Images/Button7.png',
             width: 130,
@@ -212,7 +236,9 @@ class Bottom extends StatelessWidget {
           width: 90,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(Mychats());
+          },
           child: Image.asset(
             'Images/Button8.png',
             width: 130,
@@ -240,7 +266,9 @@ class BottomSmall extends StatelessWidget {
           width: 20,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(Notfs());
+          },
           child: Image.asset(
             'Images/Button7.png',
             width: 130,
@@ -251,7 +279,9 @@ class BottomSmall extends StatelessWidget {
           width: 110,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(Mychats());
+          },
           child: Image.asset(
             'Images/Button8.png',
             width: 130,
@@ -279,7 +309,9 @@ class BottomBig extends StatelessWidget {
           width: 30,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(Notfs());
+          },
           child: Image.asset(
             'Images/Button7.png',
             width: 130,
@@ -290,7 +322,9 @@ class BottomBig extends StatelessWidget {
           width: 90,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(Mychats());
+          },
           child: Image.asset(
             'Images/Button8.png',
             width: 135,
@@ -395,7 +429,9 @@ class Bottom_Bar extends StatelessWidget {
       height: 50,
       child: Row(children: [
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(Homepage());
+          },
           child: Container(
             width: 80,
             decoration:
@@ -410,7 +446,9 @@ class Bottom_Bar extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(ContactMentors());
+          },
           child: Container(
             width: 80,
             decoration:
@@ -425,7 +463,9 @@ class Bottom_Bar extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(NavigateMajors());
+          },
           child: Container(
             width: 80,
             decoration:
@@ -440,13 +480,15 @@ class Bottom_Bar extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(Community());
+          },
           child: Container(
             width: 80,
             decoration:
                 BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
             child: Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(11),
               child: Image.asset(
                 'Images/Many_people.png',
                 height: 40,
@@ -458,7 +500,9 @@ class Bottom_Bar extends StatelessWidget {
           width: 5,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(myacc());
+          },
           child: Container(
             width: 86,
             decoration: BoxDecoration(color: Color.fromARGB(255, 25, 157, 140)),
@@ -490,7 +534,8 @@ class Bottom_BarSmall extends StatelessWidget {
           onTap: () {},
           child: Container(
             width: 80,
-            decoration: BoxDecoration(color: Color.fromARGB(255, 25, 157, 140)),
+            decoration:
+                BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
             child: Padding(
               padding: const EdgeInsets.all(13),
               child: Image.asset(
@@ -501,7 +546,9 @@ class Bottom_BarSmall extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(ContactMentors());
+          },
           child: Container(
             width: 80,
             decoration:
@@ -516,7 +563,9 @@ class Bottom_BarSmall extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(NavigateMajors());
+          },
           child: Container(
             width: 80,
             decoration:
@@ -531,7 +580,9 @@ class Bottom_BarSmall extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(Community());
+          },
           child: Container(
             width: 80,
             decoration:
@@ -545,12 +596,16 @@ class Bottom_BarSmall extends StatelessWidget {
             ),
           ),
         ),
+        SizedBox(
+          width: 5,
+        ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(myacc());
+          },
           child: Container(
             width: 71,
-            decoration:
-                BoxDecoration(color: Color.fromARGB(255, 249, 221, 172)),
+            decoration: BoxDecoration(color: Color.fromARGB(255, 25, 157, 140)),
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: Image.asset(
